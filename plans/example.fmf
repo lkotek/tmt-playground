@@ -6,3 +6,5 @@ execute:
 prepare:
     how: install
     package: tmt
+provision:
+    how: connect
