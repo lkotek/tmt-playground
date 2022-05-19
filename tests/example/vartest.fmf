@@ -1,3 +1,0 @@
-summary: Test variables passing
-test: echo $LKOTEK
-framework: shell
