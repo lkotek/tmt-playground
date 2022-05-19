@@ -5,6 +5,7 @@ execute:
     how: tmt
 prepare:
     how: install
+    copr: psss/tmt
     package: tmt
 provision:
     how: virtual
