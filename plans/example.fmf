@@ -5,5 +5,6 @@ execute:
     how: tmt
 provision:
     how: artemis
-    virtualization:
-        is-virtualized: false
+    hardware:
+        virtualization:
+            is-virtualized: false
