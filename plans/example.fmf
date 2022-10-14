@@ -4,4 +4,4 @@ discover:
 execute:
     how: tmt
 provision:
-    how: virtual
+    how: artemis
