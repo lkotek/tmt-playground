@@ -5,6 +5,3 @@ execute:
     how: tmt
 provision:
     how: artemis
-    hardware:
-        virtualization:
-            is-virtualized: false
