@@ -13,4 +13,4 @@ provision:
         virtualization:
             is-virtualized: false
         cpu:
-            threads: 2
+            processors: '>=2'
