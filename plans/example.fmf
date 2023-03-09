@@ -5,3 +5,12 @@ execute:
     how: tmt
 provision:
     how: artemis
+    hardware:
+        memory: '>=2 GB'
+        disk:
+          - size: '>=20 GB'
+        arch: x86_64
+        virtualization:
+            is-virtualized: false
+        cpu:
+            threads: 2
