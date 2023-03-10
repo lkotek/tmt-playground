@@ -6,11 +6,11 @@ execute:
 provision:
     how: artemis
     hardware:
-        memory: '>=2 GB'
+        memory: ">=2 GiB"
         disk:
-          - size: '>=20 GB'
+          - size: ">=20 GiB"
         arch: x86_64
         virtualization:
             is-virtualized: false
         cpu:
-            processors: '>=2'
+            processors: ">=2"

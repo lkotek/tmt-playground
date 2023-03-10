@@ -1,0 +1,20 @@
+summary: Basic smoke test
+execute:
+    how: tmt
+prepare:
+  - name: Clone kar repository
+    how: shell
+    script: git clone https://github.com/lkotek/tmt-playground/
+  - name: Install tmt on the host
+    how: install
+    package:
+      - tmt-all
+discover:
+    how: shell
+    tests:
+    - name: Execute first plan
+      framework: shell
+      test: tmt run plan --name empty
+    - name: Execute second plan
+      framework: shell
+      test: tmt run plan --name example
