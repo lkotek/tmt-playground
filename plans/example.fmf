@@ -5,10 +5,10 @@ execute:
     how: tmt
 provision:
     how: artemis
+    arch: x86_64
     hardware:
         memory: ">=2 GiB"
-        arch: x86_64
         virtualization:
             is-virtualized: false
         cpu:
-            processors: ">=2"
+            processors: ">= 2"
