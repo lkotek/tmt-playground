@@ -1,13 +1,18 @@
-summary: Basic smoke test
+summary: Basic plan with simple HW specs
 discover:
     how: fmf
 execute:
     how: tmt
+prepare:
+    how: install
+    package: qemu-kvm
 provision:
     how: artemis
     arch: x86_64
     hardware:
         memory: ">=2 GiB"
+        disk:
+          - size: ">= 20 GiB"
         virtualization:
             is-virtualized: false
         cpu:
