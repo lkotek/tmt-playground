@@ -15,5 +15,6 @@ provision:
           - size: ">= 20 GiB"
         virtualization:
             is-virtualized: false
+            is-supported: true
         cpu:
             processors: ">= 2"
