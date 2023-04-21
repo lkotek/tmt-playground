@@ -1,0 +1,3 @@
+summary: Check all variables on provisioned system
+test: export
+framework: shell
