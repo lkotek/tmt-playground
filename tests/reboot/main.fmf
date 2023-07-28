@@ -1,0 +1,10 @@
+summary: Reboot before tests are started
+test: |
+    if [ "$TMT_REBOOT_COUNT" -eq 0 ]; then
+        echo 'Before the reboot'
+        tmt-reboot
+    elif [ "$TMT_REBOOT_COUNT" -eq 1 ]; then
+        echo 'After the reboot'
+    fi 
+framework: shell
+order: -1

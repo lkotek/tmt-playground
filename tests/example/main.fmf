@@ -1,3 +1,4 @@
-summary: Test package is installed
-test: rpm -q qemu-kvm
+summary: Echo random string
+test: echo "Pink Floyd are the best!"
 framework: shell
+order: 10
