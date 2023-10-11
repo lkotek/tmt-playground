@@ -1,0 +1,50 @@
+summary: Timeouts, reservation, pubkey and passwords
+provision:
+    how: artemis
+    arch: x86_64
+    hardware:
+        memory: ">=2 GiB"
+        disk:
+          - size: ">= 20 GiB"
+        virtualization:
+            is-virtualized: false
+            is-supported: true
+        cpu:
+            processors: ">= 2"
+
+prepare:
+  - name: Allow connection via ssh pub keys
+    how: shell
+    script: |
+      echo "# Public keys added via tmt plan
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBnusrjptgdZU91OYl+qsmLeDGkBpwKI0awvVb1RLrt lkotek@t14
+      " >> ~/.ssh/authorized_keys
+  - name: Set root password
+    how: shell
+    script: | 
+      echo "root:\$6\$Ed2f9zN56hyyOgad\$P2jfBv9SeydoPECed/3sJ9oG67dmuoasrlFS2futCDYD6T8u3y9G8ccYZ.hAYiQWlBTQp7Y8ZGKdrcFzQn9wP0" | chpasswd -e
+    
+execute:
+    how: tmt
+            
+discover:
+    how: shell
+    tests:
+      - name: Pink Floyd test
+        framework: shell  
+        test: echo 'Pink Floyd are the best!'
+      - name: Test pubkeys
+        framework: shell        
+        test: cat ~/.ssh/authorized_keys   
+      - name: Test sleep
+        framework: shell        
+        test: sleep 86400
+        duration: "2880m"
+
+finish:
+    how: shell
+    script: python3 plans/extend.py    
+
+/vmrun:
+    provision:
+        how: virtual
