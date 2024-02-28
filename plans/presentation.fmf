@@ -1,0 +1,21 @@
+summary: Simple plan for demonstration purpose
+
+provision:
+    how: artemis
+    arch: x86_64
+    hardware:
+        memory: ">=2 GiB"
+        disk:
+          - size: ">= 10 GiB"
+        virtualization:
+            is-virtualized: false
+            is-supported: true    
+    
+prepare:
+  - name: Install QEMU
+    how: install
+    package: qemu-kvm
+
+execute:
+    how: tmt
+    script: rpm -q qemu-kvm
