@@ -1,0 +1,20 @@
+summary: Simple plan without bare metal
+
+provision:
+    how: artemis
+    arch: x86_64
+    hardware:
+        memory: ">=2 GiB"
+        disk:
+          - size: ">= 10 GiB"
+        virtualization:
+            is-supported: true    
+    
+prepare:
+  - name: Install QEMU
+    how: install
+    package: qemu-kvm
+
+execute:
+    how: tmt
+    script: rpm -q qemu-kvm
