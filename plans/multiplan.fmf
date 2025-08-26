@@ -1,0 +1,55 @@
+summary: TMT plan for single and multihost
+
+provision:
+    how: virtual
+    image: centos-stream:10
+    hardware:
+        memory: '2 GB'
+        disk: '10 GB'
+
+prepare:
+  - how: shell
+    script: Generic shared prepare step"
+
+adjust:
+  - when: multihost == true
+    provision+:
+      - name: vm1
+        image: fedora:41
+        role: src
+      - name: vm2
+        image: fedora:42
+        role: dest  
+    prepare+:
+        how: shell
+        script: echo "Prepare step specific to multihost"
+  - when: multihost == false
+    prepare+:
+        how: shell
+        script: echo "Prepare step specific to singlehost"
+
+execute:
+    how: tmt
+
+discover:
+  - how: shell
+    tests:
+      - name: Test executed every time
+        test: echo "Run every time"
+  - how: shell
+    tests:
+      - name: Test only for singlehost
+        test: echo "Run only on singlehost"
+    when: multihost == false
+  - how: shell
+    where: src
+    tests:
+      - name: Test only for multihost src
+        test: echo "Run on multihost src"
+    when: multihost == true    
+  - how: shell
+    where: dest
+    tests:
+      - name: Test only for multihost desc
+        test: echo "Run on multihost dest"
+    when: multihost == true
